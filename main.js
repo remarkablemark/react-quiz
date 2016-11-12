@@ -5,9 +5,16 @@
  */
 import React from 'react';
 import { render } from 'react-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import App from './components/App.jsx';
 
+// needed for `onTouchTap`
+// https://github.com/callemall/material-ui#react-tap-event-plugin
+require('react-tap-event-plugin')();
+
 render(
-    <App />,
+    <MuiThemeProvider>
+        <App />
+    </MuiThemeProvider>,
     document.getElementById('root')
 );
