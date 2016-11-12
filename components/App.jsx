@@ -27,6 +27,7 @@ class App extends React.Component {
                         { text: 'Chopin', id: 'chopin' },
                         { text: 'Mozart', id: 'mozart' }
                     ]}
+                    answer='mozart'
                 />
             </div>
         );

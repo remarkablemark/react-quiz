@@ -15,6 +15,7 @@ import {
     RadioButtonGroup
 } from 'material-ui/RadioButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import Dialog from 'material-ui/Dialog';
 
 /**
  * Quiz component.
@@ -22,21 +23,65 @@ import RaisedButton from 'material-ui/RaisedButton';
 class Quiz extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isDialogOpen: false
+        };
+        this._handleChange = this._handleChange.bind(this);
+        this._handleSubmit = this._handleSubmit.bind(this);
+        this._handleClose = this._handleClose.bind(this);
+    }
+
+    _handleChange(event, value) {
+        this.setState({ value });
+    }
+
+   _handleSubmit() {
+        const { state, props } = this;
+        if (state.value === props.answer) {
+            this.setState({
+                dialogText: 'Correct',
+                isDialogOpen: true
+            });
+        } else {
+            this.setState({
+                dialogText: 'Incorrect',
+                isDialogOpen: true
+            });
+        }
+    }
+
+    _handleClose() {
+        this.setState({
+            isDialogOpen: false
+        });
     }
 
     render() {
         const {
+            props,
+            state,
+            _handleChange,
+            _handleSubmit,
+            _handleClose
+        } = this;
+
+        const {
             id,
             question,
             choices,
-            submit
-        } = this.props;
+            submit,
+        } = props;
+
+        const {
+            isDialogOpen,
+            dialogText
+        } = state;
 
         return (
             <Card>
                 <CardTitle title={question} />
                 <CardText>
-                    <RadioButtonGroup name={id}>
+                    <RadioButtonGroup name={id} onChange={_handleChange}>
                         {choices.map((choice, index) => {
                             return (
                                 <RadioButton
@@ -49,8 +94,19 @@ class Quiz extends React.Component {
                     </RadioButtonGroup>
                 </CardText>
                 <CardActions>
-                    <RaisedButton label={submit} />
+                    <RaisedButton
+                        label={submit}
+                        onTouchTap={_handleSubmit}
+                    />
                 </CardActions>
+                <Dialog open={isDialogOpen}
+                        title={dialogText}
+                        onRequestClose={_handleClose}>
+                    <RaisedButton
+                        label='Close'
+                        onTouchTap={_handleClose}
+                    />
+                </Dialog>
             </Card>
         );
     }
