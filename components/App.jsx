@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 import React from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
+import AppBar from 'material-ui/AppBar';
 
 /**
  * App component.
@@ -13,8 +13,10 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <h1>Welcome to React Quiz</h1>
-                <RaisedButton label='Start' />
+                <AppBar
+                    title='React Quiz'
+                    showMenuIconButton={false}
+                />
             </div>
         );
     }
