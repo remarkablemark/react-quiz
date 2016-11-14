@@ -5,7 +5,6 @@
  */
 import React from 'react';
 import {
-    Card,
     CardActions,
     CardText,
     CardTitle
@@ -78,7 +77,7 @@ class Quiz extends React.Component {
         } = state;
 
         return (
-            <Card>
+            <div>
                 <CardTitle title={question} />
                 <CardText>
                     <RadioButtonGroup name={id} onChange={_handleChange}>
@@ -107,7 +106,7 @@ class Quiz extends React.Component {
                         onTouchTap={_handleClose}
                     />
                 </Dialog>
-            </Card>
+            </div>
         );
     }
 }
