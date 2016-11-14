@@ -35,7 +35,7 @@ class Quiz extends React.Component {
         this.setState({ value });
     }
 
-   _handleSubmit() {
+    _handleSubmit() {
         const { state, props } = this;
         if (state.value === props.answer) {
             this.setState({

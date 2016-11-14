@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack-dev-server --hot --inline",
     "build": "webpack",
-    "watch": "webpack -w"
+    "watch": "webpack -w",
+    "lint": "eslint --ext .js --ext .jsx ."
   },
   "repository": {
     "type": "git"
@@ -21,7 +22,12 @@
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-tap-event-plugin": "^1.0.0",
-    "webpack": "^1.13.2",
+    "webpack": "^1.13.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.0",
+    "eslint": "^3.10.0",
+    "eslint-plugin-react": "^6.7.0",
     "webpack-dev-server": "^1.16.1"
   },
   "license": "MIT"
